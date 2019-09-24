@@ -1,0 +1,1 @@
+# A MacOS keymap based on the Default Planck Layout, with support for undo/redo vol.up/vol.down/mute del/backspace on a rotary encoder
