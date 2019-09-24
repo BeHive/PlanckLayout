@@ -35,7 +35,8 @@ enum planck_keycodes {
   DVORAK,
   PLOVER,
   BACKLIT,
-  EXT_PLV
+  EXT_PLV,
+  AUTOFIND
 };
 
 #define LOWER MO(_LOWER)
@@ -45,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Qwerty
  * ,-----------------------------------------------------------------------------------.
- * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
+ * |      |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Esc  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -55,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_planck_grid(
-    KC__MUTE,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+    _______,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
     BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
@@ -117,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Raise
  * ,-----------------------------------------------------------------------------------.
- * |      |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
+ * | Find |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |   `  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   -  |   =  |   [  |   ]  |  \   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -127,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_planck_grid(
-    _______,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
+    AUTOFIND,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
     KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
     _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NUHS, KC_NUBS, KC_PGUP, KC_PGDN, _______,
     _______, _______, _______, _______, _______, KC_TAB, KC_TAB, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
@@ -154,7 +155,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Adjust (Lower + Raise)
  *                      v------------------------RGB CONTROL--------------------v
  * ,-----------------------------------------------------------------------------------.
- * |      | Reset|Debug |   a  |   d  |   1  |   d  |   a  |   s  |   +  |   0  |  Del |
+ * | Mute | Reset|Debug | RGB  |RGBMOD| HUE+ | HUE- | SAT+ | SAT- |BRGTH+|BRGTH-|  Del |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |MUSmod|Aud on|Audoff|AGnorm|AGswap|Qwerty|Colemk|Dvorak|Plover|      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -164,7 +165,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_planck_grid(
-    _______, RESET,   DEBUG,   KC_A, KC_D, KC_1, KC_D, KC_A, KC_S,  KC_PLUS, KC_0, KC_DEL ,
+    KC_MUTE, RESET,   DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL ,
     _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  COLEMAK,  DVORAK,  PLOVER,  _______,
     _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  TERM_ON, TERM_OFF, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______
@@ -246,7 +247,37 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_PLOVER);
       }
       return false;
-      break;	
+      break;
+    case AUTOFIND:
+      if (record->event.pressed) {
+        /*
+         * Copy
+         */
+        register_code(KC_LGUI);
+        register_code(KC_C);
+        unregister_code(KC_C);
+        unregister_code(KC_LGUI);
+        /*
+         * Find
+         */
+        register_code(KC_LGUI);
+        register_code(KC_F);
+        unregister_code(KC_F);
+        unregister_code(KC_LGUI);
+        /*
+         * Paste
+         */
+        register_code(KC_LGUI);
+        register_code(KC_V);
+        unregister_code(KC_V);
+        unregister_code(KC_LGUI);
+        /*
+         * Enter
+         */
+        tap_code(KC_ENT);
+      }
+      return false;
+      break;
   }
   return true;
 }
@@ -258,9 +289,6 @@ uint8_t muse_offset = 70;
 uint16_t muse_tempo = 50;
 
 void encoder_update(bool clockwise) {
-  /*
-   * The default stuff that was already here for muse mode
-   */
   if (muse_mode) {
     if (IS_LAYER_ON(_RAISE)) {
       if (clockwise) {
@@ -276,50 +304,77 @@ void encoder_update(bool clockwise) {
       }
     }
   } else {
-  /*
-   * Altered behaviour when not in muse mode
-   */
-  
-    if (IS_LAYER_ON(_RAISE)) {
-      /*
-       * These keycodes are for a mac build.
-       * Make the necessary adjustments if you want it for windows or linux
-       * (changing KC_LGUI for KC_LCTL should be enough)
-       */
-	    if (clockwise) {
-        register_code(KC_LGUI);
-		    register_code(KC_Z); 
-		    unregister_code(KC_Z); 
-	    unregister_code(KC_LGUI);
-      } 
+
+    /*
+     * Volume Down/Up
+     */
+  if(IS_LAYER_ON(_ADJUST)){
+      if (clockwise) {
+        tap_code(KC__VOLDOWN);
+      }
       else {
-		    register_code(KC_LGUI);
-		    register_code(KC_LSHIFT);
-		    register_code(KC_Z); 
-		    unregister_code(KC_Z); 
-		    unregister_code(KC_LSHIFT);
-		    unregister_code(KC_LGUI);
-		  }
-    } 
-    else {
-	    if (IS_LAYER_ON(_LOWER)) {
-        if (clockwise) {
-          tap_code(KC_BSPC);
-        } else {
-          tap_code(KC_DEL);
-        }
-	    }
-	    else{
-      /*
-       * These keycodes are for a mac build.
-       * Change KC__VOLDOWN to KC_VOLD and KC__VOLUP to KC_VOLU to make work on windows or linux
-       */
-        if (clockwise) {
-          tap_code(KC__VOLDOWN);
-        } else {
-          tap_code(KC__VOLUP);
-        }		
-	    }
+        tap_code(KC__VOLUP);
+      }
+    }
+    else{
+        /*
+         * Find previous/next
+         */
+      if (IS_LAYER_ON(_RAISE)) {
+          if (clockwise) {
+            register_code(KC_LGUI);
+        register_code(KC_LSHIFT);
+            register_code(KC_G);
+        unregister_code(KC_G);
+          unregister_code(KC_LSHIFT);
+            unregister_code(KC_LGUI);
+          }
+          else {
+            register_code(KC_LGUI);
+        register_code(KC_G);
+          unregister_code(KC_G);
+        unregister_code(KC_LGUI);
+          }
+      }
+      else{
+          /*
+             * Undo/Redo
+             */
+            if (IS_LAYER_ON(_LOWER)) {
+            if (clockwise) {
+                register_code(KC_LGUI);
+            register_code(KC_Z);
+            unregister_code(KC_Z);
+              unregister_code(KC_LGUI);
+              }
+              else {
+                register_code(KC_LGUI);
+            register_code(KC_LSHIFT);
+              register_code(KC_Z);
+              unregister_code(KC_Z);
+            unregister_code(KC_LSHIFT);
+            unregister_code(KC_LGUI);
+            }
+            }
+            else{
+              /*
+               * Mouse Scroll Down/Up
+               */
+              if (clockwise) {
+                #ifdef MOUSEKEY_ENABLE
+                tap_code(KC_MS_WH_DOWN);
+                #else
+                  tap_code(KC_PGDN);
+                #endif
+              } else {
+                #ifdef MOUSEKEY_ENABLE
+                  tap_code(KC_MS_WH_UP);
+                #else
+                  tap_code(KC_PGUP);
+                #endif
+              }
+            }
+      }
     }
   }
 }
