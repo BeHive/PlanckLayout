@@ -1,5 +1,8 @@
 # A custom keymap with a number row
 
+![Planck with number row](https://raw.githubusercontent.com/BeHive/PlanckLayout/master/IMG_9879.jpg)
+
+
 ### The keymap defaults to mac
 
 ``` lower+raise+w ``` activates Windows mode, while ``` lower+raise+w ``` goes back to mac mode
