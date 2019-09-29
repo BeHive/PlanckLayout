@@ -37,6 +37,8 @@ The rotary encoder has the following mapping:
 - lower: undo and redo. Click toggles muse mode
 - lower+raise: volume up and down, with mute/unmute on click
 
+The find next/previous and the undo/redo functionalities work better in MacOS than in Windows simply because in MacOS these shortcuts are standardized throughout most apps, while this really isn't the case with Windows
+
 ### Default Layout
 
 The default layout is as follows:
