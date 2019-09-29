@@ -26,7 +26,7 @@ There are 3 exceptions to this behaviour, and those are ```1``` ```2``` ```3```,
 
 The rotary encoder has the following mapping:
 
-- normal: scroll up and down
+- normal: scroll up and down. Click activates muse mode
 - lower: undo and redo
 - raise: find next and find previous. The click action will copy the selected text and find it
 - lower+raise: volume up and down, with mute/unmute on click
@@ -41,4 +41,4 @@ The default layout is as follows:
 |  ```Esc```  | ```A``` | ```S``` | ```D``` | ```F``` | ```G``` | ```H``` | ```J``` | ```K``` | ```L``` | ```;``` |   ```'```   |
 | ```Shift``` | ```Z``` | ```X``` | ```C``` | ```V``` |```B``` |``` N``` | ```M``` | ```,``` | ```.``` | ```/``` | ```Enter``` |
 
-For the layout of each additional layer, please refer to the ```keymao p.c``` file
+For the layout of each additional layer, please refer to the ```keymap.c``` file
