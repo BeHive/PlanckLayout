@@ -5,7 +5,7 @@
 
 ### The keymap defaults to mac
 
-``` lower+raise+w ``` activates Windows mode, while ``` lower+raise+w ``` goes back to mac mode
+``` lower+raise+w ``` activates Windows mode, while ``` lower+raise+m ``` goes back to mac mode
 
 These two modes are needed because of the different key combinations that both OSes use for the functionalities programmed into the rotary encoder
 
